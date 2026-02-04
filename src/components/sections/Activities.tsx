@@ -77,7 +77,7 @@ export const Activities = ({ activities }: ActivitiesProps) => {
   }
 
   return (
-    <section id="activities" className="py-20 bg-slate-50 dark:bg-slate-900/50">
+    <section id="activities" className="py-20 bg-slate-50 dark:bg-slate-950">
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -8,7 +8,19 @@ export const projects: Project[] = [
     demoUrl: '#',
     repoUrl: '#',
     images: [
-      'https://images.unsplash.com/photo-1545167622-3a6ac15600f3?q=80&w=1200&auto=format&fit=crop',
+      '/projects/lotusShrine/1.PNG',
+      '/projects/lotusShrine/2.PNG',
+      '/projects/lotusShrine/3.PNG',
+      '/projects/lotusShrine/4.PNG',
+      '/projects/lotusShrine/5.PNG',
+      '/projects/lotusShrine/6.PNG',
+      '/projects/lotusShrine/7.PNG',
+      '/projects/lotusShrine/8.PNG',
+      '/projects/lotusShrine/9.PNG',
+      '/projects/lotusShrine/10.PNG',
+      '/projects/lotusShrine/11.PNG',
+      '/projects/lotusShrine/12.PNG',
+      '/projects/lotusShrine/13.PNG',
     ],
     details: `
 ### Features
@@ -87,7 +99,13 @@ export const projects: Project[] = [
     demoUrl: '#',
     repoUrl: '#',
     images: [
-      'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop',
+      '/projects/eduPathMM/1.PNG',
+      '/projects/eduPathMM/2.PNG',
+      '/projects/eduPathMM/3.PNG',
+      '/projects/eduPathMM/4.PNG',
+      '/projects/eduPathMM/5.PNG',
+      '/projects/eduPathMM/6.PNG',
+      '/projects/eduPathMM/Team.PNG',
     ],
     details: `
 ### Features

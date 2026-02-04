@@ -38,7 +38,7 @@ export default function AboutMe() {
   return (
     <section
       id="about"
-      className="py-20 bg-slate-50 dark:bg-[#0A0A1A] text-slate-900 dark:text-white transition-colors duration-300"
+      className="py-20 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors duration-300"
     >
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
