@@ -1,0 +1,79 @@
+import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
+import { Button } from '../common/Button'
+import { HighlightText } from '../ui/HighlightText'
+
+type HeroProps = {
+  name: string
+  title: string
+  bio: string
+}
+
+export const Hero = ({ name, title, bio }: HeroProps) => {
+  const [angle, setAngle] = useState(0)
+  const intervalRef = useRef<number | null>(null)
+
+  useEffect(() => {
+    intervalRef.current = window.setInterval(() => {
+      setAngle((prev) => (prev + 1) % 360)
+    }, 50)
+    return () => {
+      if (intervalRef.current) {
+        window.clearInterval(intervalRef.current)
+      }
+    }
+  }, [])
+
+  return (
+    <section id="home" className="relative overflow-hidden pb-20 pt-36">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.24),_transparent_55%)] dark:bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.16),_transparent_55%)]" />
+      <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 md:flex-row md:items-center md:justify-between">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl"
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400">
+            {name}
+          </p>
+          <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+            <HighlightText
+              className="bg-gradient-to-r from-aurora via-violet to-rose"
+              style={{ backgroundImage: `linear-gradient(${angle}deg, #22d3ee, #8b5cf6, #f43f5e)` }}
+            >
+              {title}
+            </HighlightText>
+          </h1>
+          <p className="mt-5 text-lg text-slate-600 dark:text-slate-300 text-justify">{bio}</p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Button onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}>
+              View Projects
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Contact Me
+            </Button>
+          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          className="relative flex h-72 w-72 items-center justify-center self-center md:h-80 md:w-80"
+        >
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-aurora/30 via-violet/20 to-rose/30 blur-2xl" />
+          <div className="flex h-64 w-64 items-center justify-center rounded-full border border-white/40 bg-white/60 shadow-glass backdrop-blur dark:border-slate-800/80 dark:bg-slate-950/70 overflow-hidden">
+            <img
+              src="/profile.svg"
+              alt={name}
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
