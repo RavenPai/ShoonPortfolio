@@ -12,6 +12,7 @@ import {
 } from "lucide-react"
 import { BentoCard, BentoGrid } from '../ui/BentoGrid'
 import type { Activity } from '../../types/data'
+import { TextAnimate } from '../ui/text-animate'
 import { useState } from 'react'
 
 type ActivitiesProps = {
@@ -86,10 +87,22 @@ export const Activities = ({ activities }: ActivitiesProps) => {
           className="flex flex-col gap-12"
         >
           <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">
+            <TextAnimate
+              as="p"
+              animation="slideUp"
+              by="word"
+              className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400"
+            >
               Showcase
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">Recent Activities</h2>
+            </TextAnimate>
+            <TextAnimate
+              as="h2"
+              animation="slideUp"
+              by="word"
+              className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white"
+            >
+              Recent Activities
+            </TextAnimate>
           </div>
 
           <BentoGrid className="lg:grid-rows-[repeat(3,minmax(10rem,1fr))] lg:grid-cols-3 auto-rows-[minmax(10rem,auto)]">
@@ -108,7 +121,7 @@ export const Activities = ({ activities }: ActivitiesProps) => {
                   </div>
                 }
                 Icon={getIcon(activity.title)}
-                description={activity.description}
+                description=""
                 href="#"
                 cta="View Gallery"
                 onClick={() => handleOpen(activity)}

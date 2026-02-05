@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import type { Project } from '../../types/data'
 import { Badge } from '../ui/Badge'
 import { Button } from '../common/Button'
+import { TextAnimate } from '../ui/text-animate'
 import {
   Carousel,
   CarouselContent,
@@ -32,12 +33,22 @@ export const Projects = ({ projects }: ProjectsProps) => {
           transition={{ duration: 0.6 }}
         >
           <div className="mb-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">
+            <TextAnimate
+              as="p"
+              animation="slideUp"
+              by="word"
+              className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400"
+            >
               Projects
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">
+            </TextAnimate>
+            <TextAnimate
+              as="h2"
+              animation="slideUp"
+              by="word"
+              className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white"
+            >
               Selected Case Studies
-            </h2>
+            </TextAnimate>
           </div>
 
           <div className="flex flex-col">
@@ -94,14 +105,6 @@ export const Projects = ({ projects }: ProjectsProps) => {
                     <Button onClick={() => setSelectedProject(project)}>
                       View Details
                     </Button>
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:hover:bg-slate-900"
-                    >
-                      Live Demo
-                    </a>
                   </div>
                 </div>
               </motion.div>
@@ -166,14 +169,6 @@ export const Projects = ({ projects }: ProjectsProps) => {
                   </div>
 
                   <div className="mt-8 flex gap-4 border-t border-slate-200 pt-8 dark:border-slate-800">
-                    <a
-                      href={selectedProject.demoUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex-1 rounded-lg bg-slate-900 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
-                    >
-                      View Live Demo
-                    </a>
                     <a
                       href={selectedProject.repoUrl}
                       target="_blank"

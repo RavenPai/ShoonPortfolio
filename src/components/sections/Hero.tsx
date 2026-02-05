@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '../common/Button'
 import { HighlightText } from '../ui/HighlightText'
+import { TextAnimate } from '../ui/text-animate'
 
 type HeroProps = {
   name: string
@@ -29,37 +30,7 @@ export const Hero = ({ name, title, bio }: HeroProps) => {
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.24),_transparent_55%)] dark:bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.16),_transparent_55%)]" />
       <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 md:flex-row md:items-center md:justify-between">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl"
-        >
-          <p className="text-xs font-semibold uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400">
-            {name}
-          </p>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-            <HighlightText
-              className="bg-gradient-to-r from-aurora via-violet to-rose"
-              style={{ backgroundImage: `linear-gradient(${angle}deg, #22d3ee, #8b5cf6, #f43f5e)` }}
-            >
-              {title}
-            </HighlightText>
-          </h1>
-          <p className="mt-5 text-lg text-slate-600 dark:text-slate-300 text-justify">{bio}</p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Button onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}>
-              View Projects
-            </Button>
-            <Button
-              variant="secondary"
-              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Contact Me
-            </Button>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           className="relative flex h-72 w-72 items-center justify-center self-center md:h-80 md:w-80"
@@ -71,6 +42,50 @@ export const Hero = ({ name, title, bio }: HeroProps) => {
               alt={name}
               className="h-full w-full object-cover"
             />
+          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl"
+        >
+          <TextAnimate
+            as="p"
+            animation="slideUp"
+            by="word"
+            className="text-xs font-semibold uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400"
+          >
+            {name}
+          </TextAnimate>
+          <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+            <HighlightText
+              className="bg-gradient-to-r from-aurora via-violet to-rose"
+              style={{ backgroundImage: `linear-gradient(${angle}deg, #22d3ee, #8b5cf6, #f43f5e)` }}
+            >
+              <TextAnimate as="span" animation="slideUp" by="word">
+                {title}
+              </TextAnimate>
+            </HighlightText>
+          </h1>
+          <TextAnimate
+            as="p"
+            animation="slideUp"
+            by="word"
+            className="mt-5 text-lg text-slate-600 dark:text-slate-300 text-justify"
+          >
+            {bio}
+          </TextAnimate>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Button onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}>
+              View Projects
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Contact Me
+            </Button>
           </div>
         </motion.div>
       </div>

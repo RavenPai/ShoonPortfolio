@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Card, CardContent } from '../ui/card'
 import { Badge } from '../ui/Badge'
+import { TextAnimate } from '../ui/text-animate'
 import {
   Layout,
   Gauge,
@@ -54,14 +55,11 @@ export default function AboutMe() {
             transition={{ duration: 0.5 }}
             className="relative"
           >
-            <div className="h-40 w-40 overflow-hidden rounded-full border-4 border-white shadow-xl dark:border-slate-800">
+            <div className="h-40 w-40">
               <img
-                src="/profile.jpg"
-                alt="Profile"
-                className="h-full w-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.src = 'https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff&size=256'
-                }}
+                src="/aboutMe.svg"
+                alt="About Me"
+                className="h-full w-full object-contain"
               />
             </div>
             {/* Decorative glow behind */}
@@ -72,9 +70,14 @@ export default function AboutMe() {
             {/* Heading */}
             <div className="flex items-center gap-4">
               <div className="h-12 w-1.5 rounded-full bg-blue-500" />
-              <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+              <TextAnimate
+                as="h2"
+                animation="slideUp"
+                by="word"
+                className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white"
+              >
                 About Me
-              </h2>
+              </TextAnimate>
             </div>
 
             {/* Grid 1: Bio & Focus Areas */}
@@ -82,17 +85,27 @@ export default function AboutMe() {
               {/* Bio */}
               <Card className="border-none bg-white/50 shadow-sm backdrop-blur-sm dark:bg-slate-900/50">
                 <CardContent className="p-6 md:p-8">
-                  <p className="text-lg leading-8 text-slate-600 dark:text-slate-300 text-justify">
+                  <TextAnimate
+                    as="p"
+                    animation="slideUp"
+                    by="word"
+                    className="text-lg leading-8 text-slate-600 dark:text-slate-300 text-justify"
+                  >
                     I am a Junior Software Developer and CSE Undergraduate at MIIT with over two years of experience in Full-Stack Web Development and AI Integration. I love building software that makes life easier and more connected. With experience ranging from large-scale web platforms to research-funded innovations, I enjoy the challenge of turning complex ideas into simple, user-friendly tools. I’m an enthusiastic learner and a creative problem-solver, always focused on writing clean code that makes a real difference in people's lives.
-                  </p>
+                  </TextAnimate>
                 </CardContent>
               </Card>
 
               {/* Focus Areas */}
               <div className="flex flex-col justify-center space-y-6">
-                <h3 className="text-2xl font-semibold text-slate-900 dark:text-white">
+                <TextAnimate
+                  as="h3"
+                  animation="slideUp"
+                  by="word"
+                  className="text-2xl font-semibold text-slate-900 dark:text-white"
+                >
                   Focus Areas
-                </h3>
+                </TextAnimate>
                 <ul className="space-y-4">
                   {[
                     {
@@ -129,9 +142,14 @@ export default function AboutMe() {
 
             {/* Currently Focusing On */}
             <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-slate-900 dark:text-white">
+              <TextAnimate
+                as="h3"
+                animation="slideUp"
+                by="word"
+                className="text-2xl font-semibold text-slate-900 dark:text-white"
+              >
                 Currently Focusing On
-              </h3>
+              </TextAnimate>
               <div className="flex flex-wrap gap-4">
                 {[
                   { name: 'React', icon: FaReact, color: 'text-cyan-400' },
@@ -158,22 +176,42 @@ export default function AboutMe() {
                 <div className="space-y-6">
                   <div className="flex items-center gap-2 text-2xl font-semibold text-slate-900 dark:text-white">
                     <GraduationCap className="h-6 w-6 text-blue-500" />
-                    <h3>Education</h3>
+                    <TextAnimate as="h3" animation="slideUp" by="word">Education</TextAnimate>
                   </div>
                   <Card className="border-none bg-white/50 shadow-sm backdrop-blur-sm dark:bg-slate-900/50">
                     <CardContent className="p-6">
-                      <h4 className="text-lg font-bold text-slate-900 dark:text-white">
+                      <TextAnimate
+                        as="h4"
+                        animation="slideUp"
+                        by="word"
+                        className="text-lg font-bold text-slate-900 dark:text-white"
+                      >
                         Bachelor of Engineering (Hons)
-                      </h4>
-                      <p className="text-blue-500">
+                      </TextAnimate>
+                      <TextAnimate
+                        as="p"
+                        animation="slideUp"
+                        by="word"
+                        className="text-blue-500"
+                      >
                         Computer Science and Engineering (CSE)
-                      </p>
-                      <p className="mt-2 text-slate-600 dark:text-slate-400 text-justify">
+                      </TextAnimate>
+                      <TextAnimate
+                        as="p"
+                        animation="slideUp"
+                        by="word"
+                        className="mt-2 text-slate-600 dark:text-slate-400 text-justify"
+                      >
                         Myanmar Institute of Information Technology
-                      </p>
-                      <p className="text-sm text-slate-500 dark:text-slate-500 text-justify">
+                      </TextAnimate>
+                      <TextAnimate
+                        as="p"
+                        animation="slideUp"
+                        by="word"
+                        className="text-sm text-slate-500 dark:text-slate-500 text-justify"
+                      >
                         (Currently attending)
-                      </p>
+                      </TextAnimate>
                     </CardContent>
                   </Card>
                 </div>
@@ -182,16 +220,26 @@ export default function AboutMe() {
                 <div className="space-y-6">
                   <div className="flex items-center gap-2 text-2xl font-semibold text-slate-900 dark:text-white">
                     <Award className="h-6 w-6 text-blue-500" />
-                    <h3>Matriculation Exam</h3>
+                    <TextAnimate as="h3" animation="slideUp" by="word">Matriculation Exam</TextAnimate>
                   </div>
                   <Card className="border-none bg-white/50 shadow-sm backdrop-blur-sm dark:bg-slate-900/50">
                     <CardContent className="p-6">
-                      <p className="text-lg font-medium text-slate-900 dark:text-white">
+                      <TextAnimate
+                        as="p"
+                        animation="slideUp"
+                        by="word"
+                        className="text-lg font-medium text-slate-900 dark:text-white"
+                      >
                         Passed with 5 Distinctions
-                      </p>
-                      <p className="text-slate-600 dark:text-slate-400 text-justify">
+                      </TextAnimate>
+                      <TextAnimate
+                        as="p"
+                        animation="slideUp"
+                        by="word"
+                        className="text-slate-600 dark:text-slate-400 text-justify"
+                      >
                         Total Mark: 506
-                      </p>
+                      </TextAnimate>
                     </CardContent>
                   </Card>
                 </div>

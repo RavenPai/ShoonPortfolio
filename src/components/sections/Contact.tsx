@@ -1,10 +1,11 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 import type { SocialLink } from '../../types/data'
 import { Button } from '../common/Button'
-import { IconButton } from '../common/IconButton'
+import Dock from '../ui/Dock'
+import { TextAnimate } from '../ui/text-animate'
 
 type ContactProps = {
   socialLinks: SocialLink[]
@@ -23,17 +24,54 @@ export const Contact = ({ socialLinks }: ContactProps) => {
     reset,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<ContactFormValues>()
+  const [isSuccess, setIsSuccess] = useState(false)
 
   const orbitDuration = useMemo(() => 18, [])
+
+  const dockItems = useMemo(
+    () =>
+      socialLinks.map((link) => {
+        const Icon = link.icon
+        return {
+          icon: <Icon size={24} className="text-white" />,
+          label: link.platform,
+          onClick: () => window.open(link.url, '_blank'),
+        }
+      }),
+    [socialLinks]
+  )
 
   const onSubmit = async (values: ContactFormValues) => {
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
+    // Check if keys are placeholders
+    if (serviceId === 'your_service_id_here' ||
+      templateId === 'your_template_id_here' ||
+      publicKey === 'your_public_key_here') {
+      alert('Please update the .env file with your actual EmailJS keys.')
+      return
+    }
+
     if (serviceId && templateId && publicKey) {
-      await emailjs.send(serviceId, templateId, values, publicKey)
-      reset()
+      try {
+        await emailjs.send(serviceId, templateId, {
+          ...values,
+          to_email: 'paiminthway13@gmail.com',
+        }, publicKey)
+
+        setIsSuccess(true)
+        reset()
+        // Clear success message after 5 seconds
+        setTimeout(() => setIsSuccess(false), 5000)
+      } catch (error) {
+        console.error('EmailJS Error:', error)
+        alert('Failed to send message. Please try again later.')
+      }
+    } else {
+      console.warn('EmailJS environment variables are missing.')
+      alert('Email service is not configured. Please check your .env file.')
     }
   }
 
@@ -48,16 +86,31 @@ export const Contact = ({ socialLinks }: ContactProps) => {
           className="grid gap-10 lg:grid-cols-[1.2fr_1fr]"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">
+            <TextAnimate
+              as="p"
+              animation="slideUp"
+              by="word"
+              className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400"
+            >
               Contact
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">
+            </TextAnimate>
+            <TextAnimate
+              as="h2"
+              animation="slideUp"
+              by="word"
+              className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white"
+            >
               Let’s build something together
-            </h2>
-            <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">
+            </TextAnimate>
+            <TextAnimate
+              as="p"
+              animation="slideUp"
+              by="word"
+              className="mt-4 text-sm text-slate-600 dark:text-slate-300"
+            >
               Share a project idea, collaboration, or just say hello. The form connects through EmailJS for quick
               delivery.
-            </p>
+            </TextAnimate>
             <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-4">
               <div>
                 <label className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
@@ -106,7 +159,7 @@ export const Contact = ({ socialLinks }: ContactProps) => {
                 <Button type="submit" disabled={isSubmitting}>
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
-                {isSubmitSuccessful && (
+                {isSuccess && (
                   <span className="text-xs font-semibold text-emerald-500">Message sent!</span>
                 )}
               </div>
@@ -123,18 +176,16 @@ export const Contact = ({ socialLinks }: ContactProps) => {
               animate={{ rotate: -360 }}
               transition={{ duration: orbitDuration - 4, repeat: Infinity, ease: 'linear' }}
             />
-            <div className="flex flex-col items-center gap-4">
+            <div className="absolute bottom-24 flex w-full flex-col items-center gap-4">
               <p className="text-sm font-semibold text-slate-600 dark:text-slate-300">Connect</p>
-              <div className="flex gap-3">
-                {socialLinks.map((link) => (
-                  <a key={link.platform} href={link.url} target="_blank" rel="noreferrer">
-                    <IconButton ariaLabel={link.platform}>
-                      <link.icon className="text-lg" />
-                    </IconButton>
-                  </a>
-                ))}
-              </div>
             </div>
+            <Dock
+              items={dockItems}
+              panelHeight={68}
+              baseItemSize={50}
+              magnification={70}
+              position="center"
+            />
           </div>
         </motion.div>
       </div>

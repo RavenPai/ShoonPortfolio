@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import type { Skill } from '../../types/data'
+import { TextAnimate } from '../ui/text-animate'
 
 type SkillsProps = {
   skills: Skill[]
@@ -17,10 +18,22 @@ export const Skills = ({ skills }: SkillsProps) => {
           className="flex flex-col gap-12"
         >
           <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">
+            <TextAnimate
+              as="p"
+              animation="slideUp"
+              by="word"
+              className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400"
+            >
               Expertise
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">Skills & Technologies</h2>
+            </TextAnimate>
+            <TextAnimate
+              as="h2"
+              animation="slideUp"
+              by="word"
+              className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white"
+            >
+              Skills & Technologies
+            </TextAnimate>
           </div>
 
           <div className="flex flex-col bg-white rounded-xl shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
@@ -36,12 +49,22 @@ export const Skills = ({ skills }: SkillsProps) => {
                   </div>
 
                   <div className="flex flex-1 flex-col md:flex-row md:items-center gap-2 md:gap-8">
-                    <h3 className="text-xl md:text-2xl font-normal uppercase tracking-wide text-slate-900 dark:text-white shrink-0">
+                    <TextAnimate
+                      as="h3"
+                      animation="slideUp"
+                      by="word"
+                      className="text-xl md:text-2xl font-normal uppercase tracking-wide text-slate-900 dark:text-white shrink-0"
+                    >
                       {skill.name}
-                    </h3>
-                    <p className="text-xs md:text-sm font-medium uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                    </TextAnimate>
+                    <TextAnimate
+                      as="p"
+                      animation="slideUp"
+                      by="word"
+                      className="text-xs md:text-sm font-medium uppercase tracking-wider text-slate-400 dark:text-slate-500"
+                    >
                       {skill.tech}
-                    </p>
+                    </TextAnimate>
                   </div>
                 </div>
 

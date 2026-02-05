@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import type { Activity } from '../../types/data'
 import { Card } from '../common/Card'
+import { TextAnimate } from '../ui/text-animate'
 
 type AchievementsProps = {
   achievements: Activity[]
@@ -21,10 +22,22 @@ export const Achievements = ({ achievements }: AchievementsProps) => {
           className="flex flex-col gap-12"
         >
           <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">
+            <TextAnimate
+              as="p"
+              animation="slideUp"
+              by="word"
+              className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400"
+            >
               Honors
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">Achievements</h2>
+            </TextAnimate>
+            <TextAnimate
+              as="h2"
+              animation="slideUp"
+              by="word"
+              className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white"
+            >
+              Achievements
+            </TextAnimate>
           </div>
 
           <div className="flex flex-col gap-6">
