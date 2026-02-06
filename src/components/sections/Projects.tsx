@@ -15,7 +15,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeHighlight from 'rehype-highlight'
 import { X } from 'lucide-react'
-import ScrollStack, { ScrollStackItem } from '../ScrollStack'
+import ScrollStack, { ScrollStackItem } from '@/components/ui/ScrollStack'
 
 type ProjectsProps = {
   projects: Project[]
@@ -50,7 +50,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="mb-8">
+          <div className="mb-10 text-center">
             <TextAnimate
               as="p"
               animation="slideUp"
@@ -63,7 +63,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
               as="h2"
               animation="slideUp"
               by="word"
-              className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white"
+              className="mt-6 text-3xl font-semibold text-slate-900 dark:text-white"
             >
               Selected Case Studies
             </TextAnimate>
@@ -145,7 +145,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
               {projects.map((project) => (
                 <ScrollStackItem
                   key={`stack-${project.title}`}
-                  itemClassName="h-auto min-h-[26rem] bg-white/40 dark:bg-slate-900/40 ring-1 ring-slate-200 dark:ring-slate-800 backdrop-blur-sm"
+                  itemClassName="mt-0 h-auto min-h-[26rem] bg-white/40 dark:bg-slate-900/40 ring-1 ring-slate-200 dark:ring-slate-800 backdrop-blur-sm"
                 >
                   <div className="grid grid-cols-2 gap-10">
                     <div>
@@ -210,7 +210,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative flex h-[85vh] max-h-[85vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-white/20 shadow-2xl backdrop-blur dark:bg-slate-900/20"
+              className="relative flex h-[85vh] max-h-[85vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-white/90 shadow-2xl backdrop-blur dark:bg-slate-900/20"
             >
               <div className="absolute right-4 top-4 z-10">
                 <button

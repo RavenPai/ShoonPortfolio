@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '../common/Button'
 import { HighlightText } from '../ui/HighlightText'
+import FuzzyText from '../ui/FuzzyText'
 import { TextAnimate } from '../ui/text-animate'
 
 type HeroProps = {
@@ -84,12 +85,27 @@ export const Hero = ({ name, title, bio, titleGradientColors = DEFAULT_GRADIENT 
               View Projects
             </Button>
             <Button
-              variant="secondary"
+              variant="outline"
+              size="sm"
               onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Contact Me
             </Button>
           </div>
+          <p className="mt-3 text-base text-slate-800 dark:text-slate-300">
+            Or {' '}
+            <a
+              href="/resume.pdf"
+              download
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-black hover:text-black dark:text-blue-400 dark:hover:text-blue-300"
+            >
+              <FuzzyText baseIntensity={0.2} hoverIntensity={0.5} enableHover className="text-black dark:text-blue-400">
+                DOWNLOAD MY CV ▸
+              </FuzzyText>
+            </a>
+          </p>
         </motion.div>
       </div>
     </section>

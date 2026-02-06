@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import type { Activity } from '../../types/data'
-import { Card } from '../common/Card'
 import { TextAnimate } from '../ui/text-animate'
+import { MotionCarousel } from '@/components/animate-ui/components/community/motion-carousel'
+import type { EmblaOptionsType } from 'embla-carousel'
 
 type AchievementsProps = {
   achievements: Activity[]
@@ -40,52 +41,35 @@ export const Achievements = ({ achievements }: AchievementsProps) => {
             </TextAnimate>
           </div>
 
-          <div className="flex flex-col gap-6">
-            {achievements.map((achievement, index) => (
-              <motion.div
-                key={achievement.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+          {(() => {
+            const options: EmblaOptionsType = { loop: true, align: 'center' }
+            const slides = achievements.map((item, i) => (
+              <div
+                key={`${item.title}-${i}`}
+                className="relative size-full overflow-hidden rounded-lg bg-white/20 shadow-md backdrop-blur-sm dark:bg-slate-900/20"
+                onClick={() => setSelectedImage(item.images[0])}
+                role="button"
+                aria-label={`${item.title} preview`}
               >
-                <Card className="group flex w-full overflow-hidden p-0 bg-slate-950/95 text-slate-50 dark:bg-slate-900">
-                  <button
-                    type="button"
-                    className="relative h-28 w-40 shrink-0 overflow-hidden bg-slate-900 sm:h-32 sm:w-48"
-                    onClick={() => setSelectedImage(achievement.images[0])}
-                    aria-label={`View ${achievement.title} image`}
-                  >
-                    <img
-                      src={achievement.images[0]}
-                      alt={achievement.title}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </button>
-
-                  <div className="flex min-w-0 flex-1 flex-col justify-center gap-1 px-5 py-4 sm:px-6 sm:py-5">
-                    <div className="flex items-start justify-between gap-4">
-                      <h3 className="truncate text-lg font-semibold text-slate-900 dark:text-white sm:text-xl">
-                        {achievement.title}
-                      </h3>
-                      <span className="shrink-0 rounded-full bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-100">
-                        {achievement.category}
-                      </span>
-                    </div>
-
-                    <p className="text-sm font-medium text-slate-900 dark:text-slate-200">
-                      {achievement.role}
-                    </p>
-
-                    <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-slate-800 dark:text-slate-300 text-justify">
-                      {achievement.description}
-                    </p>
+                <img
+                  src={item.images[0]}
+                  alt={`${item.title} image`}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute left-3 right-3 bottom-3 flex items-center justify-between rounded-lg bg-white/30 dark:bg-slate-900/40 backdrop-blur-md shadow-lg ring-1 ring-white/50 dark:ring-slate-800 px-4 py-2">
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">{item.title}</p>
+                    <p className="text-xs text-slate-800 dark:text-slate-200">{item.date}</p>
                   </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+                  <span className="text-xs font-bold text-blue-400 dark:text-blue-300 whitespace-nowrap">
+                    {item.role}
+                  </span>
+                </div>
+              </div>
+            ))
+            return <MotionCarousel slides={slides} options={options} />
+          })()}
         </motion.div>
       </div>
 

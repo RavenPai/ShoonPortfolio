@@ -33,7 +33,7 @@ export type Activity = {
   title: string
   role: string
   date: string
-  description: string
+  description?: string
   images: string[]
   category: 'Event' | 'Award' | 'Certification'
 }
