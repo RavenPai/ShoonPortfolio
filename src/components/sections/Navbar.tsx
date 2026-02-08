@@ -51,22 +51,22 @@ export const Navbar = () => {
         className={clsx(
           'mx-auto flex max-w-6xl items-center justify-between rounded-full border px-6 py-3 transition-all duration-300',
           scrolled
-            ? 'border-white/40 bg-white/75 shadow-glass backdrop-blur dark:border-slate-800/80 dark:bg-slate-950/70'
-            : 'border-transparent bg-white/30 backdrop-blur',
+            ? 'border-white/100 bg-white/30 shadow-glass backdrop-blur dark:border-slate-800/80 dark:bg-slate-950/70'
+            : 'border-transparent bg-white/70 backdrop-blur shadow-glass dark:border-transparent dark:bg-slate-950/60',
         )}
       >
         <a href="#home" className="flex items-center gap-3">
           <img
-            src="/Marr.gif"
+            src="/Mine.gif"
             alt="Logo"
             className="h-10 w-10 object-contain self-center"
           />
           <ShinyText
-            text="Pai Min Thway"
+            text="Shoon"
             speed={2}
             delay={0}
-            color={theme === 'dark' ? '#b5b5b5' : '#1e293b'}
-            shineColor={theme === 'dark' ? '#ffffff' : '#cbd5e1'}
+            color={theme === 'dark' ? '#FEE7EF' : '#310413'}
+            shineColor={theme === 'dark' ? '#F871A0' : '#F54180'}
             spread={120}
             direction="left"
             yoyo={false}
@@ -75,7 +75,7 @@ export const Navbar = () => {
             className="text-base leading-none font-bold tracking-tight"
           />
         </a>
-        <nav className="hidden items-center gap-6 text-sm text-slate-600 dark:text-slate-300 md:flex">
+        <nav className="hidden items-center gap-6 text-sm font-medium text-pink-950 dark:text-slate-200 md:flex">
           {navItems.map((item) => (
             <NavLink
               key={item.href}
@@ -118,13 +118,13 @@ const NavLink = ({ href, label, isActive }: { href: string; label: string; isAct
     <a
       href={href}
       className={clsx(
-        "relative text-xs font-semibold uppercase tracking-[0.25em] transition hover:text-slate-900 dark:hover:text-white",
-        isActive && "text-blue-600 dark:text-blue-400"
+        "relative text-xs font-semibold uppercase tracking-[0.25em] transition hover:text-pink-900 dark:hover:text-white",
+        isActive && "text-pink-500 dark:text-pink-300"
       )}
     >
       {label}
       {isActive && (
-        <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-blue-600 dark:bg-blue-400 rounded-full" />
+        <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-pink-500 dark:bg-pink-300 rounded-full" />
       )}
     </a>
   )

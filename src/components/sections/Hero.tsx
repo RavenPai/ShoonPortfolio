@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Button } from '../common/Button'
+import { Button } from '../ui/button'
 import { HighlightText } from '../ui/HighlightText'
-import FuzzyText from '../ui/FuzzyText'
 import { TextAnimate } from '../ui/text-animate'
 
 type HeroProps = {
@@ -12,9 +11,14 @@ type HeroProps = {
   titleGradientColors?: [string, string, string]
 }
 
-const DEFAULT_GRADIENT: [string, string, string] = ['#22d3ee', '#8b5cf6', '#f43f5e']
+const DEFAULT_GRADIENT: [string, string, string] = ['#F871A0', '#F54180', '#F31260']
 
-export const Hero = ({ name, title, bio, titleGradientColors = DEFAULT_GRADIENT }: HeroProps) => {
+export const Hero = ({
+  name = "Shoon Lae Phyu Sin",
+  title = "Medical Student",
+  bio = "I am a third-year medical student at University of Medicine, Mandalay. Guided by my Buddhist faith and a quiet curiosity, I find beauty in the small details of life.",
+  titleGradientColors = DEFAULT_GRADIENT
+}: Partial<HeroProps>) => {
   const [angle, setAngle] = useState(0)
   const intervalRef = useRef<number | null>(null)
 
@@ -31,7 +35,7 @@ export const Hero = ({ name, title, bio, titleGradientColors = DEFAULT_GRADIENT 
 
   return (
     <section id="home" className="relative overflow-hidden pb-20 pt-36">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.24),_transparent_55%)] dark:bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.16),_transparent_55%)]" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_var(--pink-200),_transparent_55%)] opacity-40 dark:bg-[radial-gradient(circle_at_top,_var(--pink-800),_transparent_55%)]" />
       <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 md:flex-row md:items-center md:justify-between">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -39,8 +43,8 @@ export const Hero = ({ name, title, bio, titleGradientColors = DEFAULT_GRADIENT 
           transition={{ duration: 0.7 }}
           className="relative flex h-72 w-72 items-center justify-center self-center md:h-80 md:w-80"
         >
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-aurora/30 via-violet/20 to-rose/30 blur-2xl" />
-          <div className="flex h-64 w-64 items-center justify-center rounded-full border border-white/40 bg-white/60 shadow-glass backdrop-blur dark:border-slate-800/80 dark:bg-slate-950/70 overflow-hidden">
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-pink-300/30 via-pink-400/20 to-pink-500/30 blur-2xl" />
+          <div className="flex h-64 w-64 items-center justify-center rounded-full border border-white/40 bg-white/60 shadow-glass backdrop-blur dark:border-pink-800/80 dark:bg-pink-900/70 overflow-hidden">
             <img
               src="/profile.svg"
               alt={name}
@@ -62,9 +66,9 @@ export const Hero = ({ name, title, bio, titleGradientColors = DEFAULT_GRADIENT 
           >
             {name}
           </TextAnimate>
-          <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-900 dark:font-semibold dark:text-white sm:text-5xl">
+          <h1 className="mt-4 text-4xl font-bold tracking-tight text-pink-900 dark:font-semibold dark:text-white sm:text-5xl">
             <HighlightText
-              className="bg-gradient-to-r from-aurora via-violet to-rose"
+              className="bg-gradient-to-r from-pink-300 via-pink-400 to-pink-500"
               style={{ backgroundImage: `linear-gradient(${angle}deg, ${titleGradientColors[0]}, ${titleGradientColors[1]}, ${titleGradientColors[2]})` }}
             >
               {title}
@@ -74,36 +78,22 @@ export const Hero = ({ name, title, bio, titleGradientColors = DEFAULT_GRADIENT 
             as="p"
             animation="slideUp"
             by="word"
-            className="mt-5 text-lg font-medium text-black dark:font-normal dark:text-slate-300 text-justify"
+            className="mt-5 text-lg font-medium text-pink-800 dark:font-normal dark:text-pink-200 text-justify"
           >
             {bio}
           </TextAnimate>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Button onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}>
-              View Projects
+            <Button onClick={() => document.querySelector('#worlds')?.scrollIntoView({ behavior: 'smooth' })}>
+              Explore My Journey
             </Button>
             <Button
               variant="outline"
               size="sm"
-              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Contact Me
+              Read My Story
             </Button>
           </div>
-          <p className="mt-3 text-base text-slate-800 dark:text-slate-300">
-            Or {' '}
-            <a
-              href="/resume.pdf"
-              download
-              target="_blank"
-              rel="noreferrer"
-              className="font-semibold text-black hover:text-black dark:text-blue-400 dark:hover:text-blue-300"
-            >
-              <FuzzyText baseIntensity={0.2} hoverIntensity={0.5} enableHover className="text-black dark:text-blue-400">
-                DOWNLOAD MY CV ▸
-              </FuzzyText>
-            </a>
-          </p>
         </motion.div>
       </div>
     </section>

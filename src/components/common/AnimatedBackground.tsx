@@ -109,14 +109,14 @@ export const AnimatedBackground = () => {
 
     const getAtomColor = () => {
       if (isDark)
-        return `rgba(148, 163, 184, ` // slate-400
-      return `rgba(15, 23, 42, ` // slate-900
+        return `rgba(248, 113, 160, ` // pink-300
+      return `rgba(49, 4, 19, ` // pink-900
     }
 
     const getClickColor = () => {
       if (isDark)
-        return `rgba(56, 189, 248, ` // sky-400
-      return `rgba(30, 64, 175, ` // blue-800
+        return `rgba(245, 65, 128, ` // pink-400
+      return `rgba(194, 14, 77, ` // pink-600
     }
 
     const draw = () => {

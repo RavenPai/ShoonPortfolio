@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react'
 import { ThemeProvider } from './contexts/ThemeContext'
+import Loading from './components/ui/Loading'
 
 const Home = lazy(() => import('./pages/Home'))
 
@@ -8,8 +9,8 @@ const App = () => {
     <ThemeProvider>
       <Suspense
         fallback={
-          <div className="min-h-screen bg-page-light text-slate-500 dark:bg-page-dark dark:text-slate-300 flex items-center justify-center">
-            Loading portfolio...
+          <div className="min-h-screen bg-background flex items-center justify-center">
+            <Loading />
           </div>
         }
       >

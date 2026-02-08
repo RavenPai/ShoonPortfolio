@@ -5,5 +5,6 @@ export const getInitialTheme = (): Theme => {
   if (stored === 'light' || stored === 'dark') {
     return stored
   }
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  // Default to light mode to showcase the Pink Palette
+  return 'light' 
 }
