@@ -119,7 +119,7 @@ export default function BounceCards({
         const noRot = baseTransform.replace(/rotate\([^)]+\)/, 'rotate(0deg)');
         gsap.to(target, {
           transform: `${noRot} scale(1.15)`,
-          zIndex: 50,
+          zIndex: isMobile ? 5 : 50,
           duration: 0.4,
           ease: 'power2.out',
           overwrite: 'auto',

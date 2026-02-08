@@ -122,6 +122,11 @@
     padding: 9px 18px;
     font-size: 13.5px;
   }
+
+  /* Ensure focused card sits behind modal/gallery on small screens */
+  .card.focused {
+    z-index: 5;
+  }
 }
 
 @media (max-width: 480px) {
