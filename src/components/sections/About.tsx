@@ -64,7 +64,7 @@ export const About = () => {
                 Skills
               </h3>
               <div className="flex flex-wrap gap-2">
-                {skills.map((skill, index) => (
+                {skills.map((skill) => (
                   <motion.span
                     key={skill}
                     whileHover={{ scale: 1.05 }}
@@ -81,7 +81,7 @@ export const About = () => {
                 Interests
               </h3>
               <div className="grid gap-4 sm:grid-cols-1">
-                {interests.map((item, index) => (
+                {interests.map((item) => (
                   <motion.div
                     key={item.title}
                     whileHover={{ x: 4 }}

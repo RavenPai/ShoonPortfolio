@@ -24,7 +24,6 @@ export default function BounceCards({
   animationStagger = 0.06,
   easeType = 'elastic.out(1, 0.8)',
   transformStyles = [],
-  enableHover = true,
   onItemClick,
 }: BounceCardsProps) {
   const containerRef = useRef<HTMLDivElement>(null);

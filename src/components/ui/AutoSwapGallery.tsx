@@ -29,7 +29,7 @@ export const AutoSwapGallery = ({
     return () => clearInterval(timer)
   }, [images.length, interval, isDragging])
 
-  const handleDragEnd = (event: any, info: any) => {
+  const handleDragEnd = (_event: any, info: any) => {
     setIsDragging(false)
     const offset = info.offset.x
     const velocity = info.velocity.x

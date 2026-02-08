@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
 import { Card } from '../common/Card'
 import { HoverGallery } from '../ui/HoverGallery'
-import { Button } from '../ui/button'
 
 type World = {
   id: string
