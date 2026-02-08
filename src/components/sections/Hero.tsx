@@ -83,15 +83,15 @@ export const Hero = ({
             {bio}
           </TextAnimate>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Button onClick={() => document.querySelector('#worlds')?.scrollIntoView({ behavior: 'smooth' })}>
-              Explore My Journey
+            <Button onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}>
+              Read My Story
             </Button>
             <Button
               variant="outline"
               size="sm"
-              onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.querySelector('#burmese')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Read My Story
+              Explore My Galleries
             </Button>
           </div>
         </motion.div>

@@ -26,7 +26,7 @@ export const About = () => {
   return (
     <section id="about" className="relative overflow-hidden py-24">
       {/* Background elements to match Hero style but subtle */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_left,_var(--pink-200),_transparent_70%)] opacity-20 dark:bg-[radial-gradient(circle_at_bottom_left,_var(--pink-900),_transparent_70%)]" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_left,_var(--pink-100),_transparent_70%)] opacity-20 dark:bg-[radial-gradient(circle_at_bottom_left,_var(--pink-900),_transparent_70%)]" />
 
       <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 md:flex-row md:items-center md:justify-between">
         {/* Text Section (Left) */}
