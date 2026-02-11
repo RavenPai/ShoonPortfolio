@@ -143,23 +143,6 @@ export default function Modern() {
               </h2>
               <p className="text-lg leading-relaxed text-pink-800/90 dark:text-pink-100/90 md:text-xl">A lovely new way to carry my culture every day</p>
             </div>
-            <motion.button
-              onClick={() => document.querySelector('#new-way')?.scrollIntoView({ behavior: 'smooth' })}
-              aria-label="Scroll Down"
-              className="group relative flex flex-col items-center justify-center mt-4 md:mt-8"
-            >
-              <span className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-pink-900 dark:text-white">
-                Scroll Down
-              </span>
-              <motion.div
-                initial={{ y: 0, opacity: 0.95 }}
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
-                className="rounded-full border border-pink-900/30 dark:border-white/30 p-3 bg-white/70 dark:bg-white/10 shadow-sm"
-              >
-                <ArrowDown className="h-6 w-6 text-pink-900 dark:text-white" />
-              </motion.div>
-            </motion.button>
           </div>
           <div id='new-way' className="flex flex-col items-center">
             <span className="mb-8 text-center text-sm font-medium uppercase tracking-[0.2em] text-pink-800/60 dark:text-pink-200/60 md:mb-2">
