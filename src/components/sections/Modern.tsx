@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import CircularGallery from '../ui/CircularGallery'
 import Loading from '../ui/Loading'
 import BounceCards from '../ui/BounceCards.tsx'
-import { ArrowDown, X } from 'lucide-react'
+import { X } from 'lucide-react'
 
 const GALLERY_COLLECTIONS = [
   {
