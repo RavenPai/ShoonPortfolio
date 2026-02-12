@@ -46,7 +46,7 @@ export const Hero = ({
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-pink-300/30 via-pink-400/20 to-pink-500/30 blur-2xl" />
           <div className="flex h-64 w-64 items-center justify-center rounded-full border border-white/40 bg-white/60 shadow-glass backdrop-blur dark:border-pink-800/80 dark:bg-pink-900/70 overflow-hidden">
             <img
-              src="/profile.svg"
+              src="/profile.png   "
               alt={name}
               className="h-full w-full object-cover"
             />
