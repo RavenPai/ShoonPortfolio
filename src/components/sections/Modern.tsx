@@ -146,7 +146,7 @@ export default function Modern() {
           </div>
           <div id='new-way' className="flex flex-col items-center">
             <span className="mb-8 text-center text-sm font-medium uppercase tracking-[0.2em] text-pink-800/60 dark:text-pink-200/60 md:mb-2">
-              Tap and click a card to view more
+              Tap and click a card to VIEW MORE
             </span>
             <BounceCards
               items={GALLERY_ITEMS}
